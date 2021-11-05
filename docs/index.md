@@ -1,12 +1,10 @@
 # Abstract
 
-Provide a brief overview of the project objhectives, approach, and results.
+In this project, I will be using Software Defined Radios to create a spatial radar-like detection system for various radio sources and eventually objects in a defined space. I will be using GNU radio to intially triangulate a cellphone in 2d, and eventually move to detecting objects and people in a room.
 
 # Team
 
-* Name of team member \#1 
-* Name of team member \#2 (delete this if necessary)
-* Name of team member \#3 (delete this if necessary)
+* Ashwin Narkar
 
 # Required Submissions
 
