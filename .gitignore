@@ -1,0 +1,13 @@
+# Ignore GNU Radio Build Files
+
+software/.pybombs/
+software/bin/
+software/etc/
+software/gr-foo/
+software/gr-ieee802-11/
+software/include/
+software/lib/
+software/libexec/
+software/setup_env.sh
+software/share/
+software/src/
