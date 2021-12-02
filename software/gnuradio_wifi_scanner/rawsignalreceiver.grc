@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: WifiScanner
+    id: rawsignalreceiver
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Scan Wifi Bands
+    title: Not titled yet
   states:
     bus_sink: false
     bus_source: false
@@ -32,6 +32,53 @@ options:
     state: enabled
 
 blocks:
+- name: chan_est
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    label0: ''
+    label1: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '["LS", "LMS", "Linear Comb", "STA"]'
+    num_opts: '0'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2, 3]'
+    orient: Qt.QHBoxLayout
+    type: int
+    value: '0'
+    widget: radio_buttons
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [648, 44.0]
+    rotation: 0
+    state: enabled
+- name: enableCollection
+  id: variable_qtgui_check_box
+  parameters:
+    comment: ''
+    'false': '1'
+    gui_hint: ''
+    label: WriteToFile?
+    'true': '0'
+    type: int
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [512, 188.0]
+    rotation: 0
+    state: true
 - name: freq
   id: variable_qtgui_chooser
   parameters:
@@ -84,166 +131,164 @@ blocks:
       5910000000.0, 5920000000.0]'
     orient: Qt.QVBoxLayout
     type: real
-    value: '2412000000.0'
+    value: '5190000000.0'
     widget: combo_box
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [384, 60.0]
+    coordinate: [960, 44.0]
+    rotation: 0
+    state: enabled
+- name: gain
+  id: variable_qtgui_range
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    min_len: '200'
+    orient: QtCore.Qt.Horizontal
+    rangeType: float
+    start: '0'
+    step: '0.01'
+    stop: '1'
+    value: '0.75'
+    widget: counter_slider
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [824, 44.0]
+    rotation: 0
+    state: enabled
+- name: lo_offset
+  id: variable_qtgui_chooser
+  parameters:
+    comment: ''
+    gui_hint: ''
+    label: ''
+    label0: ''
+    label1: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '[]'
+    num_opts: '3'
+    option0: '0'
+    option1: 6e6
+    option2: 11e6
+    option3: '3'
+    option4: '4'
+    options: '[0, 1, 2]'
+    orient: Qt.QVBoxLayout
+    type: real
+    value: '0'
+    widget: combo_box
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [528, 52.0]
     rotation: 0
     state: enabled
 - name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '5000000'
+    value: 20e6
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [184, 12]
+    coordinate: [368, 28.0]
     rotation: 0
     state: enabled
-- name: analog_sig_source_x_0
-  id: analog_sig_source_x
+- name: samp_rate_0
+  id: variable_qtgui_chooser
   parameters:
-    affinity: ''
-    alias: ''
-    amp: '1'
     comment: ''
-    freq: -samp_rate/2
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    offset: '0'
-    phase: '0'
-    samp_rate: samp_rate*2
-    type: complex
-    waveform: analog.GR_COS_WAVE
+    gui_hint: ''
+    label: ''
+    label0: ''
+    label1: ''
+    label2: ''
+    label3: ''
+    label4: ''
+    labels: '["5 MHz", "10 MHz", "20 MHz", "40 MHz"]'
+    num_opts: '0'
+    option0: '0'
+    option1: '1'
+    option2: '2'
+    option3: '3'
+    option4: '4'
+    options: '[5e6, 10e6, 20e6, 40e6]'
+    orient: Qt.QVBoxLayout
+    type: real
+    value: 20e6
+    widget: combo_box
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [728, 428.0]
+    coordinate: [1136, 44.0]
     rotation: 0
-    state: true
-- name: blocks_multiply_xx_0
-  id: blocks_multiply_xx
+    state: enabled
+- name: blocks_file_sink_1
+  id: blocks_file_sink
   parameters:
     affinity: ''
     alias: ''
+    append: 'False'
     comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    num_inputs: '2'
+    file: /home/ashwin/Documents/EEM202/ecem202a_project/software/gnuradio_wifi_scanner/receivedSignal.bin
+    type: complex
+    unbuffered: 'True'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1048, 268.0]
+    rotation: 0
+    state: true
+- name: blocks_null_sink_0
+  id: blocks_null_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    bus_structure_sink: '[[0,],]'
+    comment: ''
+    num_inputs: '1'
     type: complex
     vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1080, 384.0]
+    coordinate: [1128, 408.0]
     rotation: 0
     state: true
-- name: qtgui_freq_sink_x_0
-  id: qtgui_freq_sink_x
+- name: blocks_selector_0
+  id: blocks_selector
   parameters:
     affinity: ''
     alias: ''
-    alpha1: '1.0'
-    alpha10: '1.0'
-    alpha2: '1.0'
-    alpha3: '1.0'
-    alpha4: '1.0'
-    alpha5: '1.0'
-    alpha6: '1.0'
-    alpha7: '1.0'
-    alpha8: '1.0'
-    alpha9: '1.0'
-    autoscale: 'False'
-    average: '1.0'
-    axislabels: 'True'
-    bw: 50e6
-    color1: '"blue"'
-    color10: '"dark blue"'
-    color2: '"red"'
-    color3: '"green"'
-    color4: '"black"'
-    color5: '"cyan"'
-    color6: '"magenta"'
-    color7: '"yellow"'
-    color8: '"dark red"'
-    color9: '"dark green"'
     comment: ''
-    ctrlpanel: 'False'
-    fc: freq
-    fftsize: '1024'
-    freqhalf: 'True'
-    grid: 'False'
-    gui_hint: ''
-    label: Relative Gain
-    label1: ''
-    label10: ''''''
-    label2: ''''''
-    label3: ''''''
-    label4: ''''''
-    label5: ''''''
-    label6: ''''''
-    label7: ''''''
-    label8: ''''''
-    label9: ''''''
-    legend: 'True'
+    enabled: 'True'
+    input_index: '0'
     maxoutbuf: '0'
     minoutbuf: '0'
-    name: '""'
-    nconnections: '1'
-    norm_window: 'False'
-    showports: 'False'
-    tr_chan: '0'
-    tr_level: '0.0'
-    tr_mode: qtgui.TRIG_MODE_FREE
-    tr_tag: '""'
+    num_inputs: '1'
+    num_outputs: '2'
+    output_index: enableCollection
+    showports: 'True'
     type: complex
-    units: dB
-    update_time: '0.10'
-    width1: '1'
-    width10: '1'
-    width2: '1'
-    width3: '1'
-    width4: '1'
-    width5: '1'
-    width6: '1'
-    width7: '1'
-    width8: '1'
-    width9: '1'
-    wintype: window.WIN_BLACKMAN_hARRIS
-    ymax: '10'
-    ymin: '-140'
+    vlen: '1'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1312, 332.0]
-    rotation: 0
-    state: true
-- name: rational_resampler_xxx_0
-  id: rational_resampler_xxx
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    decim: '1'
-    fbw: '0'
-    interp: '2'
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    taps: '[]'
-    type: ccc
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [808, 260.0]
+    coordinate: [504, 300.0]
     rotation: 0
     state: true
 - name: uhd_usrp_source_0
@@ -252,38 +297,38 @@ blocks:
     affinity: ''
     alias: ''
     ant0: '"TX/RX"'
-    ant1: '"RX2"'
-    ant10: '"RX2"'
-    ant11: '"RX2"'
-    ant12: '"RX2"'
-    ant13: '"RX2"'
-    ant14: '"RX2"'
-    ant15: '"RX2"'
-    ant16: '"RX2"'
-    ant17: '"RX2"'
-    ant18: '"RX2"'
-    ant19: '"RX2"'
-    ant2: '"RX2"'
-    ant20: '"RX2"'
-    ant21: '"RX2"'
-    ant22: '"RX2"'
-    ant23: '"RX2"'
-    ant24: '"RX2"'
-    ant25: '"RX2"'
-    ant26: '"RX2"'
-    ant27: '"RX2"'
-    ant28: '"RX2"'
-    ant29: '"RX2"'
-    ant3: '"RX2"'
-    ant30: '"RX2"'
-    ant31: '"RX2"'
-    ant4: '"RX2"'
-    ant5: '"RX2"'
-    ant6: '"RX2"'
-    ant7: '"RX2"'
-    ant8: '"RX2"'
-    ant9: '"RX2"'
-    bw0: 50e6
+    ant1: ''
+    ant10: ''
+    ant11: ''
+    ant12: ''
+    ant13: ''
+    ant14: ''
+    ant15: ''
+    ant16: ''
+    ant17: ''
+    ant18: ''
+    ant19: ''
+    ant2: ''
+    ant20: ''
+    ant21: ''
+    ant22: ''
+    ant23: ''
+    ant24: ''
+    ant25: ''
+    ant26: ''
+    ant27: ''
+    ant28: ''
+    ant29: ''
+    ant3: ''
+    ant30: ''
+    ant31: ''
+    ant4: ''
+    ant5: ''
+    ant6: ''
+    ant7: ''
+    ant8: ''
+    ant9: ''
+    bw0: '0'
     bw1: '0'
     bw10: '0'
     bw11: '0'
@@ -315,7 +360,7 @@ blocks:
     bw7: '0'
     bw8: '0'
     bw9: '0'
-    center_freq0: freq
+    center_freq0: uhd.tune_request(freq, rf_freq = freq - lo_offset, rf_freq_policy=uhd.tune_request.POLICY_MANUAL)
     center_freq1: '0'
     center_freq10: '0'
     center_freq11: '0'
@@ -347,7 +392,7 @@ blocks:
     center_freq7: '0'
     center_freq8: '0'
     center_freq9: '0'
-    clock_rate: 0e0
+    clock_rate: '0.0'
     clock_source0: ''
     clock_source1: ''
     clock_source2: ''
@@ -421,9 +466,9 @@ blocks:
     dc_offs_enb7: default
     dc_offs_enb8: default
     dc_offs_enb9: default
-    dev_addr: ''
-    dev_args: ''
-    gain0: '40'
+    dev_addr: serial=3186907
+    dev_args: '""'
+    gain0: gain
     gain1: '0'
     gain10: '0'
     gain11: '0'
@@ -455,7 +500,7 @@ blocks:
     gain7: '0'
     gain8: '0'
     gain9: '0'
-    gain_type0: default
+    gain_type0: normalized
     gain_type1: default
     gain_type10: default
     gain_type11: default
@@ -663,9 +708,9 @@ blocks:
     sd_spec7: ''
     show_lo_controls: 'False'
     start_time: '-1.0'
-    stream_args: ''
+    stream_args: num_recv_frames=128
     stream_chans: '[]'
-    sync: none
+    sync: sync
     time_source0: ''
     time_source1: ''
     time_source2: ''
@@ -679,15 +724,14 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [152, 268.0]
+    coordinate: [96, 204.0]
     rotation: 0
-    state: true
+    state: enabled
 
 connections:
-- [analog_sig_source_x_0, '0', blocks_multiply_xx_0, '1']
-- [blocks_multiply_xx_0, '0', qtgui_freq_sink_x_0, '0']
-- [rational_resampler_xxx_0, '0', blocks_multiply_xx_0, '0']
-- [uhd_usrp_source_0, '0', rational_resampler_xxx_0, '0']
+- [blocks_selector_0, '0', blocks_file_sink_1, '0']
+- [blocks_selector_0, '1', blocks_null_sink_0, '0']
+- [uhd_usrp_source_0, '0', blocks_selector_0, '0']
 
 metadata:
   file_format: 1
