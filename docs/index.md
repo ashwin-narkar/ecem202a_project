@@ -12,4 +12,5 @@ In this project, I will be using Software Defined Radios to create a spatial rad
 * [Midterm Checkpoint Presentation Slides](https://docs.google.com/presentation/d/1T2vKdhKHu9HAkEe2rQaG6JfpZFlZQ5K14UxmaU3qd6w/edit?usp=sharing)
 * [Final Presentation Slides](https://docs.google.com/presentation/d/1K8KAgjIGTmJ1Bbj42VPSyzuid7VqGfUGfdxqlXhw_Xk/edit?usp=sharing)
 * [Final Report](report)
-* [Video](https://youtu.be/Map0M1T9hHk)
+* [Presentation Video](https://youtu.be/Map0M1T9hHk)
+* [Demo Video](https://youtu.be/kf23oCrtaD4)
