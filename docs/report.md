@@ -100,3 +100,10 @@ For next steps, I want to use Automatic Modulation Classification to identify th
 I also want to move this project to use more machine learning techniques. I want to use the channel estimate information from Wifi to decipher information about a scene. There are currently research papers that have used this approach, and I want to build off of it, so that I can use a single application that can either locate signals or use channel estimate information from a discovered wifi signal to decipher information about the scene.  
 
 # 6. References
+
+GNU Radio Setup: https://kb.ettus.com/Building_and_Installing_the_USRP_Open-Source_Toolchain_(UHD_and_GNU_Radio)_on_Linux
+Gr-ieee802_11: https://github.com/bastibl/gr-ieee802-11
+Detecting Wi-Fi and Bluetooth signals using SDR: http://www.koreascience.or.kr/article/JAKO202120461903891.page
+IEEE 802.11g Standard: https://www.electronics-notes.com/articles/connectivity/wifi-ieee-802-11/802-11g.php
+Bluetooth Physical Layer: https://www.rfwireless-world.com/Tutorials/Bluetooth-physical-layer.html
+GNU Radio Tutorials: https://wiki.gnuradio.org/index.php/Tutorials
